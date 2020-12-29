@@ -101,13 +101,17 @@ def show_vid2(x):
 # *****************************************************************
 if __name__ == '__main__':
     root = tk.Tk()
-
+    # img = ImageTk.PhotoImage(Image.open("4-emoties-3.gif"))
+    # heading = Label(root, image=img, bg='black')
+    # heading.pack()
     heading2 = Label(root, text="Photo to Emoji", pady=20, font=('arial', 45, 'bold'), bg='black', fg='#CDCDCD')
     heading2.pack()
+    # lmain = tk.Label(master=root, padx=50, bd=10)
     lmain2 = tk.Label(master=root, bd=10)
 
     lmain3 = tk.Label(master=root, bd=10, fg="#CDCDCD", bg='black')
-
+    # lmain.pack(side=LEFT)
+    # lmain.place(x=50, y=250)
     lmain3.pack()
     lmain3.place(x=960, y=250)
     lmain2.pack(side=RIGHT)
@@ -120,6 +124,7 @@ if __name__ == '__main__':
     btn = Button(root, text='Open Camera', command=show_vid, bg='green', font=('arial', 25, 'bold'))
     print('bttttttttttn',btn)
     btn.pack()
+    # show_vid()
     show_vid2(0)
     root.update()
     root.mainloop()
