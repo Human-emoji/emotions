@@ -10,8 +10,8 @@ num_classes = 5
 img_rows,img_cols = 48,48
 batch_size = 32
 
-train_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/train'
-validation_data_dir = '/Users/durgeshthakur/Deep Learning Stuff/Emotion Classification/fer2013/validation'
+train_data_dir = 'haarcascade_frontalface_default.xml'
+validation_data_dir = 'Emotion_little_vgg.h5'
 
 train_datagen = ImageDataGenerator(
 					rescale=1./255,

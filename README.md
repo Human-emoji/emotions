@@ -1,10 +1,13 @@
-# humanemotion
+# Human-emoji
+> ### Team Member 
+ 1. **Hadeel Al-Hawajreh**
+ 2. **Diala ALbdelqader**
+ 3. **Mohammad  Fadi Hboubati**
+ 4. **Hamza Rashed**
+ 
 
 
-Save all these 4 files in single folder . 
-Change the path of your files.
-Run it smoothly . 
-You need to have following Libraries installed :
  -Tensorflow
  -Keras
  -OpenCv
+ 
