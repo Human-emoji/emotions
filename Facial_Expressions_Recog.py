@@ -16,16 +16,14 @@ from keras.layers import Conv2D
 from keras.optimizers import Adam
 from keras.layers import MaxPooling2D
 from keras.preprocessing.image import ImageDataGenerator
-
 from PIL import Image,ImageTk
 from tkinter import *
 import tkinter as tk
 
-
 from PIL import Image, ImageTk
-# ****************************************************************************************start
-emotion_dict = {0: "Angry",  1: "Happy", 2: "Neutral",
-                3: "Sad", 4: "Surprised" , 5:"default"}
+
+emotion_dict = {0: "Angry  ",  1: "Happy  ", 2: "Neutral  ",
+                3: "Sad  ", 4: "Surprised  " , 5:"Emotions  "}
 
 emoji_dist = {0: "emojis/angry.png",  1: "emojis/happy.png",
               2: "emojis/neutral.png", 3: "emojis/sad.png", 4: "emojis/surpriced.png" ,5:"emojis/default.png"}
@@ -33,18 +31,13 @@ emoji_dist = {0: "emojis/angry.png",  1: "emojis/happy.png",
 global last_frame1
 last_frame1 = np.zeros((480, 640, 3), dtype=np.uint8)
 global cap1
-show_text = [0,1,2,3,4]
-
-
+show_text = [0,1,2,3,4,5]
+#  first function to open the web cam
 def show_vid():
-
-#***************************************************************************************************
     face_classifier = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
     classifier = load_model(r'Emotion_little_vgg.h5')
-
-    class_labels = ['Angry', 'Happy', 'Neutral', 'Sad', 'Surprise','emoji']
+    class_labels = ['Angry', 'Happy', 'Neutral', 'Sad', 'Surprise']
     print("test")
-
     cap = cv2.VideoCapture(0)
     i=0
     while True:
@@ -52,7 +45,7 @@ def show_vid():
         ret, frame = cap.read()
         labels = []
 
-        if i >= 5:
+        if i >4:
             i = 0
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -103,27 +96,28 @@ if __name__ == '__main__':
     # img = ImageTk.PhotoImage(Image.open("4-emoties-3.gif"))
     # heading = Label(root, image=img, bg='black')
     # heading.pack()
-    heading2 = Label(root, text="Photo to Emoji", pady=20, font=('arial', 45, 'bold'), bg='black', fg='#CDCDCD')
+    heading2 = Label(root, text="Picture To Emotions", pady=20, font=('arial', 45, 'bold'), bg='yellow', fg='black')
     heading2.pack()
     # lmain = tk.Label(master=root, padx=50, bd=10)
-    lmain2 = tk.Label(master=root, bd=10)
-
-    lmain3 = tk.Label(master=root, bd=10, fg="#CDCDCD", bg='black')
+    lmain2 = tk.Label(master=root, bd=50)
+    # CDCDCD
+    lmain3 = tk.Label(master=root, bd=10, fg="black", bg='yellow')
     # lmain.pack(side=LEFT)
-    # lmain.place(x=50, y=250)
+    # lmain.place(x=50, y=250)q
     lmain3.pack()
     lmain3.place(x=960, y=250)
     lmain2.pack(side=RIGHT)
     lmain2.place(x=900, y=350)
 
-    root.title("Photo To Emoji")
-    root.geometry("1400x900+100+10")
-    root['bg'] = 'black'
-    exitbutton = Button(root, text='Quit', fg="red", command=root.destroy, font=('arial', 25, 'bold')).pack(side=BOTTOM)
-    btn = Button(root, text='Open Camera', command=show_vid, bg='green', font=('arial', 25, 'bold'))
-    print('bttttttttttn',btn)
+    root.title("Picture To Emotions")
+    root.geometry("1300x1000")
+    root['bg'] = 'yellow'
+    exitbutton = Button(root, text='  Quit   ', fg="black",bg='white', command=root.destroy, font=('arial', 18, 'bold')).pack(side=BOTTOM)
+    btn = Button(root, text=' Open Camera '  ,fg='black', command=show_vid, bg='white', font=('arial', 20, 'bold'))
     btn.pack()
     # show_vid()
     show_vid2(-1)
+    # btn2 = Button(root, text=' show Camera ', fg='black', command=lambda :show_vid2(2), bg='white', font=('arial', 20, 'bold'))
+    # btn2.pack()
     root.update()
     root.mainloop()
