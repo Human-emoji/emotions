@@ -4,77 +4,6 @@ from keras.preprocessing.image import img_to_array
 from keras.preprocessing import image
 import cv2
 import numpy as np
-<<<<<<< HEAD
-
-face_classifier = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
-classifier =load_model(r'Emotion_little_vgg.h5')
-
-class_labels = ['Angry','Happy','Neutral','Sad','Surprise']
-
-cap = cv2.VideoCapture(0)
-
-
-
-while True:
-    # Grab a single frame of video
-    ret, frame = cap.read()
-    labels = []
-    gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-    faces = face_classifier.detectMultiScale(gray,1.3,5)
-
-    for (x,y,w,h) in faces:
-        cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
-        roi_gray = gray[y:y+h,x:x+w]
-        roi_gray = cv2.resize(roi_gray,(48,48),interpolation=cv2.INTER_AREA)
-    # rect,face,image = face_detector(frame)
-
-
-        if np.sum([roi_gray])!=0:
-            roi = roi_gray.astype('float')/255.0
-            roi = img_to_array(roi)
-            roi = np.expand_dims(roi,axis=0)
-
-        # make a prediction on the ROI, then lookup the class
-
-            preds = classifier.predict(roi)[0]
-            label=class_labels[preds.argmax()]
-            label_position = (x,y)
-            cv2.putText(frame,label,label_position,cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
-        else:
-            cv2.putText(frame,'No Face Found',(20,60),cv2.FONT_HERSHEY_SIMPLEX,2,(0,255,0),3)
-    cv2.imshow('Emotion Detector',frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-cap.release()
-cv2.destroyAllWindows()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
 from PIL import Image,ImageTk
 from tkinter import *
 import tkinter as tk
@@ -96,10 +25,10 @@ import tkinter as tk
 from PIL import Image, ImageTk
 # ****************************************************************************************start
 emotion_dict = {0: "Angry",  1: "Happy", 2: "Neutral",
-                3: "Sad", 4: "Surprised"}
+                3: "Sad", 4: "Surprised" , 5:"default"}
 
 emoji_dist = {0: "emojis/angry.png",  1: "emojis/happy.png",
-              2: "emojis/neutral.png", 3: "emojis/sad.png", 4: "emojis/surpriced.png"}
+              2: "emojis/neutral.png", 3: "emojis/sad.png", 4: "emojis/surpriced.png" ,5:"emojis/default.png"}
 
 global last_frame1
 last_frame1 = np.zeros((480, 640, 3), dtype=np.uint8)
@@ -113,7 +42,7 @@ def show_vid():
     face_classifier = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
     classifier = load_model(r'Emotion_little_vgg.h5')
 
-    class_labels = ['Angry', 'Happy', 'Neutral', 'Sad', 'Surprise']
+    class_labels = ['Angry', 'Happy', 'Neutral', 'Sad', 'Surprise','emoji']
     print("test")
 
     cap = cv2.VideoCapture(0)
@@ -123,7 +52,7 @@ def show_vid():
         ret, frame = cap.read()
         labels = []
 
-        if i > 4:
+        if i >= 5:
             i = 0
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -147,7 +76,6 @@ def show_vid():
                 label = class_labels[x]
                 label_position = (x, y)
                 cv2.putText(frame, label, label_position, cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
-
 
             else:
                 cv2.putText(frame, 'No Face Found', (20, 60), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
@@ -196,7 +124,6 @@ if __name__ == '__main__':
     print('bttttttttttn',btn)
     btn.pack()
     # show_vid()
-    show_vid2(0)
+    show_vid2(-1)
     root.update()
     root.mainloop()
->>>>>>> 18bdd4226007d89d4d2876f20983d24a02dcc7e9
