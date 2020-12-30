@@ -9,7 +9,11 @@ import os
 num_classes = 5
 img_rows,img_cols = 48,48
 batch_size = 32
+<<<<<<< HEAD
 # C:\Users\LTUC\PycharmProjects\humaEmoat
+=======
+
+>>>>>>> 18bdd4226007d89d4d2876f20983d24a02dcc7e9
 train_data_dir = 'haarcascade_frontalface_default.xml'
 validation_data_dir = 'Emotion_little_vgg.h5'
 
