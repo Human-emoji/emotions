@@ -87,7 +87,7 @@ def show_vid2(x):
     img2 = Image.fromarray(frame2)
     imgtk2 = ImageTk.PhotoImage(image=img2)
     lmain2.imgtk2 = imgtk2
-    lmain3.configure(text=emotion_dict[show_text[x]], font=('arial', 45, 'bold'))
+    lmain3.configure(text=emotion_dict[show_text[x]], font=('Comic Sans MS', 40))
     lmain2.configure(image=imgtk2)
     lmain2.after(10, show_vid2)
 # *****************************************************************
@@ -96,12 +96,12 @@ if __name__ == '__main__':
     # img = ImageTk.PhotoImage(Image.open("4-emoties-3.gif"))
     # heading = Label(root, image=img, bg='black')
     # heading.pack()
-    heading2 = Label(root, text="Picture To Emotions", pady=10, font=('arial', 30, 'bold'), bg='yellow', fg='black')
+    heading2 = Label(root, text="Picture To Emotions", pady=10, font=('Comic Sans MS', 40), bg='lightgray', fg='black')
     heading2.pack()
     # lmain = tk.Label(master=root, padx=50, bd=10)
     lmain2 = tk.Label(master=root, bd=50)
     # CDCDCD
-    lmain3 = tk.Label(master=root, bd=10, fg="black", bg='yellow')
+    lmain3 = tk.Label(master=root, bd=10, fg="black", bg='lightgray')
     # lmain.pack(side=LEFT)
     # lmain.place(x=50, y=250)
     lmain3.pack()
@@ -111,11 +111,11 @@ if __name__ == '__main__':
 
     root.title("Picture To Emotions")
     root.geometry("1500x1300")
-    root['bg'] = 'yellow'
-    exitbutton = Button(root, text='  Quit   ', fg="black",bg='white', command=root.destroy, font=('arial', 18, 'bold')).place(x=1010, y=100)
-    btn = Button(root, text=' Open Camera ',fg='black', command=show_vid, bg='white', font=('arial', 20, 'bold'))
+    root['bg'] = 'lightgray'
+    exitbutton = Button(root, text='  Quit   ', fg="black",bg='white', command=root.destroy, font=('Comic Sans MS', 20, 'bold')).place(x=1010, y=120)
+    btn = Button(root, text=' Open Camera ',fg='black', command=show_vid, bg='white', font=('Comic Sans MS', 20, 'bold'))
     btn.pack()
-    btn.place(x=500,y=100)
+    btn.place(x=500,y=120)
 
     # show_vid()
     show_vid2(-1)
